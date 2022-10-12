@@ -4,6 +4,7 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 
 module.exports = {
+    mode: "development",	
     entry: {
         index: './src/index.js',
         print: './src/print.js'
@@ -11,6 +12,7 @@ module.exports = {
       plugins: [
         new HtmlWebpackPlugin({
           title: 'Progressive Web Application',
+          template: './src/index.html'
         }),
        // new WorkboxPlugin.GenerateSW({
           // these options encourage the ServiceWorkers to get in there fast
