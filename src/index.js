@@ -2,6 +2,9 @@ import _ from 'lodash';
 import './style.css';
 import Icon from './icon.png';
 import printMe from './print.js';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import {LikeButton} from './like_button.js';
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -37,3 +40,7 @@ function component() {
   }
   
   document.body.appendChild(component());
+
+const domContainer = document.querySelector('#like_button_container');
+const root = ReactDOM.createRoot(domContainer);
+root.render(React.createElement(LikeButton));

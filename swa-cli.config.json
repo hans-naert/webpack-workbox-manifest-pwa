@@ -1,0 +1,11 @@
+{
+  "$schema": "https://aka.ms/azure/static-web-apps-cli/schema",
+  "configurations": {
+    "webpack-workbox-manifest-pwa": {
+      "appLocation": "dist",
+      "outputLocation": ".",
+      "appName": "static-web-app-hn-2022",
+      "resourceGroupName": "static-web-app-rg"
+    }
+  }
+}
