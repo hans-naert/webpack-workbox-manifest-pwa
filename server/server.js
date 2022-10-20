@@ -42,7 +42,7 @@ app.post('/push', (req, res) => {
             console.log('Error sending Notification' + error);
         });
     });
-    res.send("pushed")
+    res.send(`{"pushed": true}`)
 });
 
 
