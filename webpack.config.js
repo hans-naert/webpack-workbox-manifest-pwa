@@ -3,24 +3,35 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 
-module.exports = {
-    mode: "development",	
+module.exports = [
+  {
+    name: 'server',
+    entry: './server/server.js',
+    target: 'node',
+    output: {
+      path: path.resolve(__dirname, "dist"),
+      filename: 'server.js',
+    },
+    mode: 'development',
+  },
+  {
+    mode: "development",
     entry: {
-        index: './src/index.js',
-        print: './src/print.js'
-      },
-      plugins: [
-        new HtmlWebpackPlugin({
-          title: 'Progressive Web Application',
-          template: './src/index.html'
-        }),
-       // new WorkboxPlugin.GenerateSW({
-          // these options encourage the ServiceWorkers to get in there fast
-          // and not allow any straggling "old" SWs to hang around
-        //  clientsClaim: true,
-        //  skipWaiting: true,
-       // }),
-       new WorkboxPlugin.InjectManifest({
+      index: './src/index.js',
+      print: './src/print.js'
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        title: 'Progressive Web Application',
+        template: './src/index.html'
+      }),
+      // new WorkboxPlugin.GenerateSW({
+      // these options encourage the ServiceWorkers to get in there fast
+      // and not allow any straggling "old" SWs to hang around
+      //  clientsClaim: true,
+      //  skipWaiting: true,
+      // }),
+      new WorkboxPlugin.InjectManifest({
         swSrc: './src/sw.js',
       }),
       new WebpackPwaManifest({
@@ -45,22 +56,23 @@ module.exports = {
             purpose: 'maskable'
           }
         ]
-      })    
-      ],
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-      },
+      })
     ],
-  },
-};
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist'),
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
+        },
+      ],
+    },
+  }
+];
