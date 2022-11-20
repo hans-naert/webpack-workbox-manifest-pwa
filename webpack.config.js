@@ -9,7 +9,7 @@ module.exports = [
     entry: './server/server.js',
     target: 'node',
     output: {
-      path: path.resolve(__dirname, "dist"),
+      path: path.resolve(__dirname, "server-bundled"),
       filename: 'server.js',
     },
     mode: 'development',
