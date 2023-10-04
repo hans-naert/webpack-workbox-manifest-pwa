@@ -1,7 +1,7 @@
 const express = require('express')
 const webPush = require('web-push')
 const app = express()
-const port = 3000
+const port = 3000 | process.env.PORT
 let subscriptions = []
 
 app.use(express.static('dist'))
