@@ -50,7 +50,7 @@ let isSubscribed = false;
   }))
     .then(function (subscription) {
       console.log('User is subscribed. subscription:' + JSON.stringify(subscription));
-      fetch("http://localhost:3000/register", {
+      fetch("/register", {
         method: 'POST', // or 'PUT'
         headers: {
           'Content-Type': 'application/json'
@@ -104,7 +104,7 @@ root.render(React.createElement(LikeButton));
 
 let pushNotificationTriggerButton = document.getElementById('pushNotificationTriggerBtn');
 pushNotificationTriggerButton.onclick = () => {
-  fetch("http://localhost:3000/push", {
+  fetch("/push", {
     method: 'POST', // or 'PUT'
     body: JSON.stringify("test") // data can be `string` or {object}!
   }).then(res => res.json())
