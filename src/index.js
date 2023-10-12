@@ -24,7 +24,11 @@ if (!('Notification' in window)) {
   notificationsBtn.style.display = 'none';
 }
 notificationsBtn.addEventListener('click', () => {
-  Notification.requestPermission();
+  Notification.requestPermission().then((permission) => {
+    console.log(permission);
+    if(permission=="granted")
+      notificationsBtn.style.display = 'none';
+  });
 });
 
 function urlB64ToUint8Array(base64String) {
